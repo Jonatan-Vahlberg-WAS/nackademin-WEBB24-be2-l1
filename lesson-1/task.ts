@@ -16,7 +16,7 @@ function getCourses(): string[] {
     return _courses
 }
 
-function getFilteredCourses(search?: string){
+function getFilteredCourses(search?: string): string[]{
     return _courses.filter(c => search ? c.includes(search) : true)
 }
 
