@@ -1,52 +1,64 @@
-type Locale = "en" | "sv";
+// type Locale = "en" | "sv";
 
-type Basetranslations = {
-  dashboard: string;
-  menu: string;
-  admin: string;
-};
+// /** Allow arbitrarily deep objects with string leaves */
+// type NestedStrings = { [k: string]: string | NestedStrings };
 
-const enDashboardTranslations = {
-  title: "Dashboard",
-};
+// /** Single source of truth (can be nested arbitrarily) */
+// const translations = {
+//   en: {
+//     dashboard: {
+//       title: "Dashboard",
+//       cards: {
+//         revenue: { title: "Revenue" },
+//       },
+//     },
+//     menu: { goBack: "Go Back" },
+//     admin: { title: "Admin", subtitle: "Admin panel" },
+//   },
+//   sv: {
+//     dashboard: {
+//       title: "Instrumentpanel",
+//       cards: {
+//         revenue: { title: "Intäkter" },
+//       },
+//     },
+//     menu: { goBack: "Tillbaka" },
+//     admin: { title: "Admin", subtitle: "Adminpanel" },
+//   },
+// } satisfies Record<Locale, NestedStrings>;
 
-const enMenuTranslations = {
-  goBack: "Go Back",
-};
+// /** Helpers to build dot-separated paths to string leaves */
+// type Join<K, P> = K extends string | number
+//   ? P extends "" ? `${K}` : `${K}.${P}`
+//   : never;
 
-const enAdminTranslations = {
-  title: "Admin",
-  subtitle: "Admin panel",
-};
+// type PathsToLeaves<T> = T extends string
+//   ? ""                                  // base case: leaf
+//   : {                                   // recurse into objects
+//       [K in keyof T & (string | number)]: Join<K, PathsToLeaves<T[K]>>
+//     }[keyof T & (string | number)];
 
-type SectionTranslations = {
-  dashboard: typeof enDashboardTranslations;
-  menu: typeof enMenuTranslations;
-  admin: typeof enAdminTranslations;
-};
+// /** All valid "locale.section.subsection.key" paths */
+// type TranslationKey = {
+//   [L in keyof typeof translations & string]:
+//     Join<L, PathsToLeaves<typeof translations[L]>>
+// }[keyof typeof translations & string];
 
-// ----------------------
-// Template Literal: build valid keys like "en.dashboard.title"
-// ----------------------
-type TranslationKeys<
-  L extends Locale,
-  Sections extends Record<string, object>
-> = {
-  [K in keyof Sections]: {
-    [P in keyof Sections[K] & string]: `${L}.${Extract<K, string>}.${P}`;
-  }[keyof Sections[K] & string];
-}[keyof Sections];
+// // Examples
+// type EnKeys = Extract<TranslationKey, `en.${string}`>;
+// // "en.dashboard.title" |
+// // "en.dashboard.cards.revenue.title" |
+// // "en.menu.goBack" |
+// // "en.admin.title" | "en.admin.subtitle" | ...
 
-// Example: all valid translation keys for English
-type EnKeys = TranslationKeys<"en", SectionTranslations>;
-// => "en.dashboard.title" | "en.menu.goBack" | "en.admin.title" | "en.admin.subtitle"
+// function t<K extends TranslationKey>(key: K): string {
+//   // lookup logic...
+//   return key;
+// }
 
-// ----------------------
-// Usage
-// ----------------------
-function t<K extends TranslationKeys<Locale, SectionTranslations>>(
-  key: K
-): string {
-  // Imagine fetching the correct string here
-  return key;
-}
+// // ✅ valid
+// t("en.dashboard.cards.revenue.title");
+
+// // ❌ compile-time errors
+// // t("en.dashboard.wrong");
+// // t("de.menu.goBack");
