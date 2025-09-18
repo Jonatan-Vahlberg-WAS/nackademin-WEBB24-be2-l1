@@ -5,6 +5,7 @@ const courses: Course[] = [
     weeks: 8,
     isActive: true,
     categories: ["Math"],
+    language: "sv",
     eductor: {
       firstName: "Alice",
       lastName: "Johnson",
@@ -17,6 +18,7 @@ const courses: Course[] = [
     name: "Creative Writing in English",
     weeks: 10,
     categories: ["English", "Art"],
+    language: "en",
     eductor: {
       firstName: "Mark",
       lastName: "Stevens",
@@ -29,6 +31,7 @@ const courses: Course[] = [
     weeks: 6,
     isActive: true,
     categories: ["Swedish"],
+    language: "sv",
     eductor: {
       firstName: "Eva",
       lastName: "Lund",
@@ -41,6 +44,7 @@ const courses: Course[] = [
     name: "History of Ancient Civilizations",
     weeks: 12,
     categories: ["History", "Philosophy"],
+    language: "en",
   },
   {
     id: "C005",
@@ -48,6 +52,7 @@ const courses: Course[] = [
     weeks: 14,
     isActive: false,
     categories: ["Science", "Math"],
+    language: "sv",
     eductor: {
       firstName: "Daniel",
       lastName: "Kim",
@@ -59,6 +64,7 @@ const courses: Course[] = [
     name: "JavaScript Programming Bootcamp",
     weeks: 16,
     categories: ["Programming", "Math"],
+    language: "en",
     eductor: {
       firstName: "Sophia",
       lastName: "Nguyen",
@@ -70,6 +76,7 @@ const courses: Course[] = [
     name: "Music Theory & Composition",
     weeks: 9,
     categories: ["Music", "Art"],
+    language: "en",
     eductor: {
       firstName: "Leon",
       lastName: "Martinez",
@@ -83,6 +90,7 @@ const courses: Course[] = [
     weeks: 11,
     isActive: true,
     categories: ["Business"],
+    language: "sv",
     eductor: {
       firstName: "Clara",
       lastName: "Wang",
@@ -94,6 +102,7 @@ const courses: Course[] = [
     name: "Sports Science & Nutrition",
     weeks: 7,
     categories: ["Sports", "Science"],
+    language: "sv",
   },
   {
     id: "C010",
@@ -101,6 +110,7 @@ const courses: Course[] = [
     weeks: 13,
     isActive: true,
     categories: ["Philosophy", "History"],
+    language: "sv",
     eductor: {
       firstName: "Michael",
       lastName: "Green",

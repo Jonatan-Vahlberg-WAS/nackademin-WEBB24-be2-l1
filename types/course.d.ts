@@ -1,4 +1,5 @@
 //Type alias - A set of values
+
 type CourseCategory = 
   | "Math" 
   | "Swedish" 
@@ -27,4 +28,5 @@ type Course = {
   isActive?: boolean; // Optional - Param
   categories: CourseCategory[];
   eductor?: Eductor; // Nested types for more complex data
+  language: Language
 };
