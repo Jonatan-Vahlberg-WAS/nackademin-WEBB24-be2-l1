@@ -26,5 +26,5 @@ type Course = {
   weeks: number;
   isActive?: boolean; // Optional - Param
   categories: CourseCategory[];
-  eductor?: Eductor;
+  eductor?: Eductor; // Nested types for more complex data
 };
